@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- fav icon -->
+    <link rel="icon" type="image/x-icon" href="/static/images/fav_icon24.png">
+    <!-- Bootstrap link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <!-- Images CSS Files Start -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif
+        }
+
+        body {
+            min-width: 100vw;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #16384c;
+        }
+
+        .container .card {
+            max-width: 300px;
+            height: 215px;
+            margin: 30px 10px;
+            padding: 20px 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            transition: 0.3s ease-in-out;
+        }
+
+        .container .card:hover {
+            height: 450px;
+        }
+
+        .container .card .imgContainer {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            top: -50px;
+            left: 10px;
+            z-index: 1;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .container .card .imgContainer img {
+            max-width: 100%;
+            border-radius: 4px;
+        }
+
+        .container .card .content {
+            position: relative;
+            margin-top: -140px;
+            padding: 10px 15px;
+            text-align: center;
+            color: #111;
+            visibility: hidden;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.3s ease-in-out;
+        }
+
+        .container .card:hover .content {
+            visibility: visible;
+            opacity: 1;
+            margin-top: -40px;
+            transition-delay: 0.3s;
+        }
+
+        @media (max-width: 330px) {
+            .container .card .imgContainer {
+                left: -2px;
+            }
+        }
+    </style>
+    <!-- Images CSS Files end -->
+    <title>Love</title>
+</head>
+
+<body>
+    <!-- Navbar start -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <img src="/static/images/main_icon72.png" alt="Logo" width="30" height="24"
+                    class="d-inline-block align-text-top">
+                    MyTrip
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Place</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">Trip</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    {% if user %}
+                    <div class="dropdown">
+                        <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            {{user}}
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item btn btn-primary " href="/update">Update Profile</a></li>
+                            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+
+                        </ul>
+                    </div>
+                    {% else %}
+                    <a class="btn btn-primary " href="/">Go to Home->Login</a>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar end -->
+
+
+    <!-- Images card start -->
+    <div class="container d-flex align-items-center justify-content-center position-relative flex-wrap">
+        <div class="card d-flex position-relative flex-column">
+            <div class='imgContainer'>
+                <img src='/static/images/lakshdweep.jpg'>
+            </div>
+            <div class="content">
+                <h2>Lakshadweep</h2>
+                <p>Lakshadweep a romantic place in India, literally – this cluster of islands remotely located from the mainland is
+                    enough reason for the romantics to rush towards it.</p>
+            </div>
+        </div>
+        <div class="card d-flex position-relative flex-column">
+            <div class='imgContainer'>
+                <img src='/static/images/manali.jpeg'>
+            </div>
+            <div class="content">
+                <h2>Manali</h2>
+                <p>Manali is the honeymoon destination you've been looking for. You will love the waterfalls and
+                    adventure sports.</p>
+            </div>
+        </div>
+        <div class="card d-flex position-relative flex-column">
+            <div class='imgContainer'>
+                <img src='/static/images/goa.jpg'>
+            </div>
+            <div class="content">
+                <h2>Goa</h2>
+                <p>Goa is a preferred destination for most newlyweds as it is home to beautiful beaches, great food and
+                    vibrant nightlife.</p>
+            </div>
+        </div>
+    </div>
+    <!-- Images card end -->
+</body>
+
+</html>
